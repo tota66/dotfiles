@@ -1,0 +1,12 @@
+[user]
+	name = Totaro Nakashima
+	email = tota.paf66@gmail.com
+[color]
+	ui = auto
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	br = branch
+[core]
+	pager = lv -c
