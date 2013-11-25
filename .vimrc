@@ -1,21 +1,27 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+    call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+NeoBundle 'Shougo/neobundle.vim'
 
 " githubにあるプラグイン
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'tpope/vim-endwise'
 "Bundle 'Lokaltog/vim-powerline'
 
 " vim-scripts上にあるプラグイン
-Bundle 'molokai'
-Bundle 'Zenburn'
-Bundle 'wombat256.vim'
+NeoBundle 'molokai'
+NeoBundle 'Zenburn'
+NeoBundle 'wombat256.vim'
 
 filetype plugin indent on
+filetype indent on
 
 "hi Comment ctermfg=blue
 " molokai
@@ -169,3 +175,10 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+""" vim-endwise 
+" neocomplcache との競合を避けるhack
+inoremap <expr><silent> <CR> <SID>my_cr_function()
+function! s:my_cr_function()
+  return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
+endfunction
