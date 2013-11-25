@@ -6,7 +6,21 @@
 [alias]
 	ci = commit
 	co = checkout
-	st = status
+    di = diff
+    dc = diff --cached
+    dic = diff --cached
+	s = status
+    ss  = status --short --branch
+	st = status --ignore-submodules
 	br = branch
+	ba = branch -a
+	bv = branch -v
+	bvv = branch -vv
+	l = log --stat
+	ll = log --graph --all
+	lp = log -p
+	ls = log --graph --all --color --pretty=format:'%Cgreen%h %cd %Cred%cn %Creset%s %Cred%d'
+	lg = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
 [core]
+	editor = vim -c \"set fenc=utf-8\"
 	pager = lv -c
