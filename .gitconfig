@@ -1,5 +1,5 @@
 [user]
-	name = Totaro Nakashima
+	name = tota66
 	email = tota.paf66@gmail.com
 [color]
 	ui = auto
@@ -21,6 +21,9 @@
 	lp = log -p
 	ls = log --graph --all --color --pretty=format:'%Cgreen%h %cd %Cred%cn %Creset%s %Cred%d'
 	lg = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
+    pr = pull --rebase
+    pl = pull
+    ps = push
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	pager = lv -c
