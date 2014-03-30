@@ -43,7 +43,13 @@ setopt magic_equal_subst
 ## 補完候補のカーソル選択を有効に
 zstyle ':completion:*:default' menu select=1
 ## 補完候補の色づけ
-eval `dircolors`
+if [ -f ~/.dircolors ]; then
+    if type dircolors > /dev/null 2>&1; then
+        eval `dircolors ~/.dircolors`
+    elif type gdircolors > /dev/null 2>&1; then
+        eval `gdircolors ~/.dircolors`
+    fi
+fi
 export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 ## ディレクトリ名だけでcd
@@ -86,5 +92,4 @@ alias aclog='tail -f /var/log/httpd/access_log'
 alias aplog='tail -f /var/log/httpd/error_log'
 alias phplog='tail -f /var/log/php.log'
 
-alias works='cd /var/www/html/works'
-alias codes='cd /home/tota/works/codes'
+echo "load .zshrc!"
